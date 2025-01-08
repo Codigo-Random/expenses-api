@@ -35,9 +35,17 @@ router.post('/register', async (req, res) => {
       [email, hashedPassword]
     );
 
+    const user = result.rows[0];
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      'your_jwt_secret',
+      { expiresIn: '1h' }
+    );
+
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
-      user: result.rows[0]
+      user: user,
+      token: token
     });
   } catch (error) {
     console.error('Error en el registro:', error);
