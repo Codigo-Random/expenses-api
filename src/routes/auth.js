@@ -104,4 +104,12 @@ module.exports = router;
     }
   });
   
+  router.post('/logout', (req, res) => {
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: true // Set to true if using HTTPS
+    });
+    res.status(200).json({ message: 'Logout exitoso' });
+  });
+  
   module.exports = router;
