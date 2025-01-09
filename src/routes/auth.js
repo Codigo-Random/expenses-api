@@ -112,4 +112,20 @@ module.exports = router;
     res.status(200).json({ message: 'Logout exitoso' });
   });
   
+
+router.get('/status', (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ message: 'No autenticado' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, 'your_jwt_secret');
+    res.status(200).json({ message: 'Autenticado', user: decoded });
+  } catch (error) {
+    res.status(401).json({ message: 'Token inválido' });
+  }
+});
+
   module.exports = router;
