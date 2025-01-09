@@ -42,6 +42,13 @@ router.post('/register', async (req, res) => {
       { expiresIn: '1h' }
     );
 
+    // Set the token in a secure HTTP-only cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: true, // Set to true if using HTTPS
+      maxAge: 3600000 // 1 hour
+    });
+
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
       user: user,
@@ -83,6 +90,14 @@ module.exports = router;
         { expiresIn: '1h' }
       );
   
+
+    // Set the token in a secure HTTP-only cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: true, // Set to true if using HTTPS
+      maxAge: 3600000 // 1 hour
+    });
+    
       res.json({ token });
     } catch (error) {
       res.status(500).json({ message: 'Error en el login', error });
@@ -90,5 +105,3 @@ module.exports = router;
   });
   
   module.exports = router;
-  
-  
