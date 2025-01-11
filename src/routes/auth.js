@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
     // Set the token in a secure HTTP-only cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true, // Set to true if using HTTPS
+      secure: false, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
       sameSite: 'lax',
       path: '/'
@@ -96,7 +96,7 @@ module.exports = router;
     // Set the token in a secure HTTP-only cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true, // Set to true if using HTTPS
+      secure: false, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
       sameSite: 'lax',
       path: '/'
