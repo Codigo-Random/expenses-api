@@ -47,7 +47,8 @@ router.post('/register', async (req, res) => {
       httpOnly: true,
       secure: false, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
-      sameSite: 'none'
+      sameSite: 'lax',
+      path: '/'
     });
 
     res.status(201).json({
@@ -97,7 +98,8 @@ module.exports = router;
       httpOnly: true,
       secure: false, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
-      sameSite: 'none'
+      sameSite: 'lax',
+      path: '/'
     });
     
       res.json({ token });
