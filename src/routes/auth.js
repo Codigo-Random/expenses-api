@@ -46,7 +46,9 @@ router.post('/register', async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: true, // Set to true if using HTTPS
-      maxAge: 3600000 * 24
+      maxAge: 3600000 * 24,
+      sameSite: 'lax',
+      path: '/'
     });
 
     res.status(201).json({
@@ -95,7 +97,9 @@ module.exports = router;
     res.cookie('token', token, {
       httpOnly: true,
       secure: true, // Set to true if using HTTPS
-      maxAge: 3600000 * 24
+      maxAge: 3600000 * 24,
+      sameSite: 'lax',
+      path: '/'
     });
     
       res.json({ token });
