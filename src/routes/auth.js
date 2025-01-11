@@ -48,7 +48,8 @@ router.post('/register', async (req, res) => {
       secure: true, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
       sameSite: 'none',
-      path: '/'
+      path: '/',
+      partitioned: true
     });
 
     res.status(201).json({
@@ -99,7 +100,8 @@ module.exports = router;
       secure: true, // Set to true if using HTTPS
       maxAge: 3600000 * 24,
       sameSite: 'none',
-      path: '/'
+      path: '/',
+      partitioned: true
     });
     
       res.json({ token });
